@@ -5,7 +5,7 @@
 package repo
 
 import (
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/model/v1"
+	model "github.com/mushiguang/go/apis/apiserver/policy/model/v1"
 )
 
 // PolicyRepo defines the secret resources.

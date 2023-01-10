@@ -5,7 +5,7 @@
 package mysql
 
 import (
-	repo3 "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/repo"
+	repo3 "github.com/mushiguang/go/apis/apiserver/policy/repo"
 	"sync"
 
 	"github.com/rebirthmonkey/go/pkg/mysql"

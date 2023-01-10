@@ -5,7 +5,7 @@
 package v1
 
 import (
-	"github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo"
+	"github.com/mushiguang/go/apis/apiserver/secret/repo"
 )
 
 // Service defines functions used to return resource interface.

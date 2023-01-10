@@ -5,7 +5,7 @@
 package repo
 
 import (
-	model "github.com/mushiguang/go/apiserver/apis/apiserver/secret/model/v1"
+	model "github.com/mushiguang/go/apis/apiserver/secret/model/v1"
 )
 
 // SecretRepo defines the secret resources.

@@ -5,8 +5,8 @@
 package v1
 
 import (
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/model/v1"
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/repo"
+	model "github.com/mushiguang/go/apis/apiserver/policy/model/v1"
+	"github.com/mushiguang/go/apis/apiserver/policy/repo"
 )
 
 type PolicyService interface {

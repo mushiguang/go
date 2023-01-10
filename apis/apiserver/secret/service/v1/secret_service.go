@@ -5,8 +5,8 @@
 package v1
 
 import (
-	model "github.com/mushiguang/go/apiserver/apis/apiserver/secret/model/v1"
-	"github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo"
+	model "github.com/mushiguang/go/apis/apiserver/secret/model/v1"
+	"github.com/mushiguang/go/apis/apiserver/secret/repo"
 )
 
 type SecretService interface {

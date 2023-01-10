@@ -6,8 +6,8 @@ package server
 
 import (
 	"github.com/rebirthmonkey/go/pkg/log"
-	"github.com/mushiguang/go/apiserver/apis/apiserver/student/controller/grpc/v1"
-	studentRepoMysql "github.com/mushiguang/go/apiserver/apis/apiserver/student/repo/mysql"
+	"github.com/mushiguang/go/apis/apiserver/student/controller/grpc/v1"
+	studentRepoMysql "github.com/mushiguang/go/apis/apiserver/student/repo/mysql"
 	"google.golang.org/grpc"
 )
 

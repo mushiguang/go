@@ -10,8 +10,8 @@ import (
 	"github.com/rebirthmonkey/go/pkg/errors"
 	"github.com/rebirthmonkey/go/pkg/log"
 	"github.com/rebirthmonkey/go/pkg/mysql"
-	model "github.com/mushiguang/go/apiserver/apis/apiserver/secret/model/v1"
-	secretRepoInterface "github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo"
+	model "github.com/mushiguang/go/apis/apiserver/secret/model/v1"
+	secretRepoInterface "github.com/mushiguang/go/apis/apiserver/secret/repo"
 	mysqlDriver "gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

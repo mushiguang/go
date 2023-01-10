@@ -10,7 +10,7 @@ import (
 	"github.com/rebirthmonkey/go/pkg/errors"
 	ginUtil "github.com/rebirthmonkey/go/pkg/gin/util"
 	"github.com/rebirthmonkey/go/pkg/log"
-	model "github.com/mushiguang/go/apiserver/apis/apiserver/policy/model/v1"
+	model "github.com/mushiguang/go/apis/apiserver/policy/model/v1"
 )
 
 // Create add new policy to the storage.

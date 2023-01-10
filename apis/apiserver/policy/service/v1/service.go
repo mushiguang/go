@@ -5,7 +5,7 @@
 package v1
 
 import (
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo"
+	"github.com/mushiguang/go/apis/authz/authorizer/repo"
 )
 
 type Service interface {

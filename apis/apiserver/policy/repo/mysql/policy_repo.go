@@ -14,8 +14,8 @@ import (
 	mysqlDriver "gorm.io/driver/mysql"
 	"gorm.io/gorm"
 
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/model/v1"
-	policyRepoInterface "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/repo"
+	model "github.com/mushiguang/go/apis/apiserver/policy/model/v1"
+	policyRepoInterface "github.com/mushiguang/go/apis/apiserver/policy/repo"
 )
 
 // policyRepo stores the secret's info.
