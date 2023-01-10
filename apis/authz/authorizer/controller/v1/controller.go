@@ -7,8 +7,8 @@ package v1
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo"
-	srv "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/service/v1"
+	"github.com/mushiguang/go/apis/authz/authorizer/repo"
+	srv "github.com/mushiguang/go/apis/authz/authorizer/service/v1"
 )
 
 type Controller interface {

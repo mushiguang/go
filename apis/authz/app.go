@@ -6,7 +6,7 @@ package apiserver
 
 import (
 	"github.com/rebirthmonkey/go/pkg/app"
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/server"
+	"github.com/mushiguang/go/apis/authz/server"
 )
 
 // NewApp creates an App object with default parameters.

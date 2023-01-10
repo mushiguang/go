@@ -1,7 +1,7 @@
 package repo
 
 import (
-	model "github.com/mushiguang/go/student/model/v1"
+	model "github.com/mushiguang/go/apis/apiserver/student/model/v1"
 )
 
 // StudentRepo defines the student resources.

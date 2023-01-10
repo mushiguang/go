@@ -8,7 +8,7 @@ import (
 	"github.com/marmotedu/errors"
 	"github.com/ory/ladon"
 
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo"
+	"github.com/mushiguang/go/apis/authz/authorizer/repo"
 )
 
 type ladonPolicyManager struct {

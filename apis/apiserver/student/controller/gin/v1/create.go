@@ -6,7 +6,7 @@ import (
 	"github.com/rebirthmonkey/go/pkg/errors"
 	"github.com/rebirthmonkey/go/pkg/gin/util"
 	"github.com/rebirthmonkey/go/pkg/log"
-	model "github.com/mushiguang/go/student/model/v1"
+	model "github.com/mushiguang/go/apis/apiserver/student/model/v1"
 )
 
 // Create add new student to the storage.

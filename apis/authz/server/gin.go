@@ -9,9 +9,9 @@ import (
 	"github.com/rebirthmonkey/go/pkg/gin/middleware"
 	"github.com/rebirthmonkey/go/pkg/log"
 
-	authorizerCtl "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/controller/v1"
-	authorizerRepo "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo"
-	authorizerRepoRest "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo/rest"
+	authorizerCtl "github.com/mushiguang/go/apis/authz/authorizer/controller/v1"
+	authorizerRepo "github.com/mushiguang/go/apis/authz/authorizer/repo"
+	authorizerRepoRest "github.com/mushiguang/go/apis/authz/authorizer/repo/rest"
 )
 
 // InitGin initializes the Gin server

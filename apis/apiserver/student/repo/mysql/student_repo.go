@@ -2,8 +2,8 @@ package mysql
 
 import (
 	"fmt"
-	model "github.com/mushiguang/go/student/model/v1"
-	studentRepoInterface "github.com/mushiguang/go/student/repo"
+	model "github.com/mushiguang/go/apis/apiserver/student/model/v1"
+	studentRepoInterface "github.com/mushiguang/go/apis/apiserver/student/repo"
 	"regexp"
 
 	"github.com/rebirthmonkey/go/pkg/errcode"

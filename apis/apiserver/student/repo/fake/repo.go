@@ -1,7 +1,7 @@
 package fake
 
 import (
-	repo3 "github.com/mushiguang/go/student/repo"
+	repo3 "github.com/mushiguang/go//apis/apiserver/student/repo"
 	"sync"
 )
 

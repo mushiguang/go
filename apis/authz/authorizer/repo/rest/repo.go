@@ -7,7 +7,7 @@ package rest
 import (
 	"github.com/rebirthmonkey/go/pkg/gin"
 
-	authzRepo "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo"
+	authzRepo "github.com/mushiguang/go/apis/authz/authorizer/repo"
 	"sync"
 )
 

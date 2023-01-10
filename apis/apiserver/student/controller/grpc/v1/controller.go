@@ -2,8 +2,8 @@ package v1
 
 import (
 	"context"
-	"github.com/mushiguang/go/student/repo"
-	srv "github.com/mushiguang/go/student/service/v1"
+	"github.com/mushiguang/go/apis/apiserver/student/repo"
+	srv "github.com/mushiguang/go/apis/apiserver/student/service/v1"
 )
 
 // Controller creates a GRPC student interface for student resource.

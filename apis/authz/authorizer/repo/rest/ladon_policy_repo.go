@@ -14,8 +14,8 @@ import (
 	"github.com/rebirthmonkey/go/pkg/gin"
 	"github.com/rebirthmonkey/go/pkg/log"
 
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/model/v1"
-	authzRepo "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo"
+	model "github.com/mushiguang/go/apis/apiserver/policy/model/v1"
+	authzRepo "github.com/mushiguang/go/apis/authz/authorizer/repo"
 )
 
 type ladonPolicyRepo struct {

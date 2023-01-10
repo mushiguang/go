@@ -24,7 +24,7 @@ func (a *controller) Authorize(c *gin.Context) {
 	if request.Context == nil {
 		request.Context = ladon.Context{}
 	}
-	request.Context["username"] = c.GetString("username")
+	request.Context["studentname"] = c.GetString("studentname")
 
 	res := a.srv.NewAuthorizerService().Authorize(&request)
 

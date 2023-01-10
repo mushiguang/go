@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/student/repo"
+	"github.com/mushiguang/go/apis/apiserver/student/repo"
 )
 
 // Service defines functions used to return resource interface.

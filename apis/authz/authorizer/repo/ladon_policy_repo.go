@@ -11,7 +11,7 @@ import (
 // LadonPolicyRepo defines the ladon policy interface.
 type LadonPolicyRepo interface {
 	List() ([]*ladon.DefaultPolicy, error)
-	//ListByUsername(string) ([]*ladon.DefaultPolicy, error)
+	//ListByStudentname(string) ([]*ladon.DefaultPolicy, error)
 	//SetList(string, []*ladon.DefaultPolicy)
 	//Clear()
 }

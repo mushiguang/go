@@ -5,8 +5,8 @@ import (
 	"github.com/rebirthmonkey/go/pkg/errcode"
 	"github.com/rebirthmonkey/go/pkg/errors"
 	"github.com/rebirthmonkey/go/pkg/metamodel"
-	model "github.com/mushiguang/go/student/model/v1"
-	StudentRepoInterface "github.com/mushiguang/go/student/repo"
+	model "github.com/mushiguang/go/apis/apiserver/student/model/v1"
+	StudentRepoInterface "github.com/mushiguang/go/apis/apiserver/student/repo"
 )
 
 // studentRepo stores the student's info.

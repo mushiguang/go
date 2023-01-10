@@ -8,8 +8,8 @@ import (
 	"github.com/ory/ladon"
 	"github.com/rebirthmonkey/go/pkg/log"
 
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/model/v1"
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz/authorizer/repo"
+	model "github.com/mushiguang/go/apis/authz/authorizer/model/v1"
+	"github.com/mushiguang/go/apis/authz/authorizer/repo"
 )
 
 type AuthorizerService interface {

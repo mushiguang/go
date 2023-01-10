@@ -6,7 +6,7 @@ package apiserver
 
 import (
 	"github.com/rebirthmonkey/go/pkg/app"
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/server"
+	"github.com/mushiguang/go/apis/apiserver/server"
 )
 
 // NewApp creates an App object with default parameters.

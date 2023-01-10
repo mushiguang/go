@@ -1,8 +1,8 @@
 package v1
 
 import (
-	model "github.com/mushiguang/go/student/model/v1"
-	"github.com/mushiguang/go/student/repo"
+	model "github.com/mushiguang/go/apis/apiserver/student/model/v1"
+	"github.com/mushiguang/go/apis/apiserver/student/repo"
 	"time"
 
 	"github.com/rebirthmonkey/go/pkg/metamodel"
