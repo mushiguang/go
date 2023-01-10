@@ -5,7 +5,7 @@
 package v1
 
 import (
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/repo"
+	"github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo"
 )
 
 // Service defines functions used to return resource interface.
@@ -13,7 +13,7 @@ type Service interface {
 	NewSecretService() SecretService
 }
 
-// service is the business logic of the user resource handling.
+// service is the business logic of the student resource handling.
 type service struct {
 	repo repo.Repo
 }

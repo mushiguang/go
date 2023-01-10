@@ -5,16 +5,16 @@
 package v1
 
 import (
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/model/v1"
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/repo"
+	model "github.com/mushiguang/go/apiserver/apis/apiserver/secret/model/v1"
+	"github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo"
 )
 
 type SecretService interface {
 	Create(secret *model.Secret) error
 	Update(secret *model.Secret) error
-	Delete(username, secretID string) error
-	Get(username, secretID string) (*model.Secret, error)
-	List(username string) (*model.SecretList, error)
+	Delete(studentname, secretID string) error
+	Get(studentname, secretID string) (*model.Secret, error)
+	List(studentname string) (*model.SecretList, error)
 }
 
 type secretService struct {
@@ -32,18 +32,18 @@ func (s *secretService) Create(secret *model.Secret) error {
 	return s.repo.SecretRepo().Create(secret)
 }
 
-func (s *secretService) Delete(username, secretName string) error {
-	return s.repo.SecretRepo().Delete(username, secretName)
+func (s *secretService) Delete(studentname, secretName string) error {
+	return s.repo.SecretRepo().Delete(studentname, secretName)
 }
 
 func (s *secretService) Update(secret *model.Secret) error {
 	return s.repo.SecretRepo().Update(secret)
 }
 
-func (s *secretService) Get(username, secretName string) (*model.Secret, error) {
-	return s.repo.SecretRepo().Get(username, secretName)
+func (s *secretService) Get(studentname, secretName string) (*model.Secret, error) {
+	return s.repo.SecretRepo().Get(studentname, secretName)
 }
 
-func (s *secretService) List(username string) (*model.SecretList, error) {
-	return s.repo.SecretRepo().List(username)
+func (s *secretService) List(studentname string) (*model.SecretList, error) {
+	return s.repo.SecretRepo().List(studentname)
 }

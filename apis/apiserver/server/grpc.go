@@ -6,25 +6,25 @@ package server
 
 import (
 	"github.com/rebirthmonkey/go/pkg/log"
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/controller/grpc/v1"
-	userRepoMysql "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/repo/mysql"
+	"github.com/mushiguang/go/apiserver/apis/apiserver/student/controller/grpc/v1"
+	studentRepoMysql "github.com/mushiguang/go/apiserver/apis/apiserver/student/repo/mysql"
 	"google.golang.org/grpc"
 )
 
 // InitGrpc initializes the Grpc server
 func InitGrpc(server *grpc.Server) {
-	log.Info("[GrpcServer] registry userController")
+	log.Info("[GrpcServer] registry studentController")
 
-	//userRepoClient, err := userRepoFake.Repo()
+	//studentRepoClient, err := studentRepoFake.Repo()
 	//if err != nil {
 	//	log.Fatalf("failed to create fake repo: %s", err.Error())
 	//}
 
-	userRepoClient, err := userRepoMysql.Repo(config.CompletedMysqlConfig)
+	studentRepoClient, err := studentRepoMysql.Repo(config.CompletedMysqlConfig)
 	if err != nil {
 		log.Fatalf("failed to create Mysql repo: %s", err.Error())
 	}
 
-	userController := v1.NewController(userRepoClient)
-	v1.RegisterUserServer(server, userController)
+	studentController := v1.NewController(studentRepoClient)
+	v1.RegisterStudentServer(server, studentController)
 }

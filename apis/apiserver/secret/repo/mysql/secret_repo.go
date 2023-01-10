@@ -10,8 +10,8 @@ import (
 	"github.com/rebirthmonkey/go/pkg/errors"
 	"github.com/rebirthmonkey/go/pkg/log"
 	"github.com/rebirthmonkey/go/pkg/mysql"
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/model/v1"
-	secretRepoInterface "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/repo"
+	model "github.com/mushiguang/go/apiserver/apis/apiserver/secret/model/v1"
+	secretRepoInterface "github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo"
 	mysqlDriver "gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -23,10 +23,10 @@ type secretRepo struct {
 
 var _ secretRepoInterface.SecretRepo = (*secretRepo)(nil)
 
-// newSecretRepo creates and returns a user storage.
+// newSecretRepo creates and returns a student storage.
 func newSecretRepo(cfg *mysql.CompletedConfig) secretRepoInterface.SecretRepo {
 	dsn := fmt.Sprintf(`%s:%s@tcp(%s)/%s?charset=utf8&parseTime=%t&loc=%s`,
-		cfg.Username,
+		cfg.Studentname,
 		cfg.Password,
 		cfg.Host,
 		cfg.Database,
@@ -61,8 +61,8 @@ func (s *secretRepo) Create(secret *model.Secret) error {
 	return nil
 }
 
-func (s *secretRepo) Delete(username, secretName string) error {
-	err := s.dbEngine.Where("username = ? and name = ?", username, secretName).Delete(&model.Secret{}).Error
+func (s *secretRepo) Delete(studentname, secretName string) error {
+	err := s.dbEngine.Where("studentname = ? and name = ?", studentname, secretName).Delete(&model.Secret{}).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return errors.WithCode(errcode.ErrUnknown, err.Error())
@@ -74,8 +74,8 @@ func (s *secretRepo) Delete(username, secretName string) error {
 	return nil
 }
 
-func (s *secretRepo) DeleteByUser(username string) error {
-	err := s.dbEngine.Where("username = ?", username).Delete(&model.Secret{}).Error
+func (s *secretRepo) DeleteByStudent(studentname string) error {
+	err := s.dbEngine.Where("studentname = ?", studentname).Delete(&model.Secret{}).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return errors.WithCode(errcode.ErrUnknown, err.Error())
@@ -95,9 +95,9 @@ func (s *secretRepo) Update(secret *model.Secret) error {
 	return nil
 }
 
-func (s *secretRepo) Get(username, name string) (*model.Secret, error) {
+func (s *secretRepo) Get(studentname, name string) (*model.Secret, error) {
 	secret := &model.Secret{}
-	err := s.dbEngine.Where("username = ? and name= ?", username, name).First(&secret).Error
+	err := s.dbEngine.Where("studentname = ? and name= ?", studentname, name).First(&secret).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.WithCode(errcode.ErrUnknown, err.Error())
@@ -109,11 +109,11 @@ func (s *secretRepo) Get(username, name string) (*model.Secret, error) {
 	return secret, nil
 }
 
-func (s *secretRepo) List(username string) (*model.SecretList, error) {
+func (s *secretRepo) List(studentname string) (*model.SecretList, error) {
 	ret := &model.SecretList{}
 
-	//if username != "" {
-	//	s.dbEngine = s.dbEngine.Where("username = ?", username)
+	//if studentname != "" {
+	//	s.dbEngine = s.dbEngine.Where("studentname = ?", studentname)
 	//}
 
 	d := s.dbEngine.

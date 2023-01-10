@@ -5,7 +5,7 @@
 package mysql
 
 import (
-	repo3 "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/repo"
+	repo3 "github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo"
 	"sync"
 
 	"github.com/rebirthmonkey/go/pkg/mysql"
@@ -34,7 +34,7 @@ func Repo(cfg *mysql.CompletedConfig) (repo3.Repo, error) {
 	return r, nil
 }
 
-// SecretRepo returns the user store client instance.
+// SecretRepo returns the student store client instance.
 func (r repo) SecretRepo() repo3.SecretRepo {
 	return r.secretRepo
 }

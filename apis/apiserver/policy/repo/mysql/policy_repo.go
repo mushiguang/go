@@ -25,7 +25,7 @@ type policyRepo struct {
 
 var _ policyRepoInterface.PolicyRepo = (*policyRepo)(nil)
 
-// newPolicyRepo creates and returns a user storage.
+// newPolicyRepo creates and returns a student storage.
 func newPolicyRepo(cfg *mysql.CompletedConfig) policyRepoInterface.PolicyRepo {
 	dsn := fmt.Sprintf(`%s:%s@tcp(%s)/%s?charset=utf8&parseTime=%t&loc=%s`,
 		//cfg.Username,
@@ -64,8 +64,8 @@ func (p *policyRepo) Create(policy *model.Policy) error {
 	return nil
 }
 
-func (p *policyRepo) Delete(username, policyName string) error {
-	err := p.dbEngine.Where("username = ? and name = ?", username, policyName).Delete(&model.Policy{}).Error
+func (p *policyRepo) Delete(studentname, policyName string) error {
+	err := p.dbEngine.Where("studentname = ? and name = ?", studentname, policyName).Delete(&model.Policy{}).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return errors.WithCode(errcode.ErrUnknown, err.Error())
@@ -77,8 +77,8 @@ func (p *policyRepo) Delete(username, policyName string) error {
 	return nil
 }
 
-func (p *policyRepo) DeleteByUser(username string) error {
-	err := p.dbEngine.Where("username = ?", username).Delete(&model.Policy{}).Error
+func (p *policyRepo) DeleteByUser(studentname string) error {
+	err := p.dbEngine.Where("studentname = ?", studentname).Delete(&model.Policy{}).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return errors.WithCode(errcode.ErrUnknown, err.Error())
@@ -98,9 +98,9 @@ func (p *policyRepo) Update(secret *model.Policy) error {
 	return nil
 }
 
-func (p *policyRepo) Get(username, name string) (*model.Policy, error) {
+func (p *policyRepo) Get(studentname, name string) (*model.Policy, error) {
 	policy := &model.Policy{}
-	err := p.dbEngine.Where("username = ? and name= ?", username, name).First(&policy).Error
+	err := p.dbEngine.Where("studentname = ? and name= ?", studentname, name).First(&policy).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.WithCode(errcode.ErrUnknown, err.Error())
@@ -112,11 +112,11 @@ func (p *policyRepo) Get(username, name string) (*model.Policy, error) {
 	return policy, nil
 }
 
-func (p *policyRepo) List(username string) (*model.PolicyList, error) {
+func (p *policyRepo) List(studentname string) (*model.PolicyList, error) {
 	ret := &model.PolicyList{}
 
-	//if username != "" {
-	//	s.dbEngine = s.dbEngine.Where("username = ?", username)
+	//if studentname != "" {
+	//	s.dbEngine = s.dbEngine.Where("studentname = ?", studentname)
 	//}
 
 	d := p.dbEngine.

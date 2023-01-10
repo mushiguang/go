@@ -9,15 +9,15 @@ import (
 	"github.com/rebirthmonkey/go/pkg/auth"
 	"github.com/rebirthmonkey/go/pkg/gin/middleware"
 	"github.com/rebirthmonkey/go/pkg/log"
-	policyCtl "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/controller/gin/v1"
-	policyRepo "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/repo"
-	policyRepoMysql "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/repo/mysql"
-	secretCtl "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/controller/gin/v1"
-	secretRepo "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/repo"
-	secretRepoMysql "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/repo/mysql"
-	userCtl "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/controller/gin/v1"
-	userRepo "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/repo"
-	userRepoMysql "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/repo/mysql"
+	policyCtl "github.com/mushiguang/go/apiserver/apis/apiserver/policy/controller/gin/v1"
+	policyRepo "github.com/mushiguang/go/apiserver/apis/apiserver/policy/repo"
+	policyRepoMysql "github.com/mushiguang/go/apiserver/apis/apiserver/policy/repo/mysql"
+	secretCtl "github.com/mushiguang/go/apiserver/apis/apiserver/secret/controller/gin/v1"
+	secretRepo "github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo"
+	secretRepoMysql "github.com/mushiguang/go/apiserver/apis/apiserver/secret/repo/mysql"
+	studentCtl "github.com/mushiguang/go/apiserver/apis/apiserver/student/controller/gin/v1"
+	studentRepo "github.com/mushiguang/go/apiserver/apis/apiserver/student/repo"
+	studentRepoMysql "github.com/mushiguang/go/apiserver/apis/apiserver/student/repo/mysql"
 )
 
 // InitGin initializes the Gin server
@@ -40,30 +40,30 @@ func installController(g *gin.Engine) *gin.Engine {
 
 	v1 := g.Group("/v1")
 	{
-		log.Info("[GinServer] registry userHandler")
-		userv1 := v1.Group("/users")
+		log.Info("[GinServer] registry studentHandler")
+		studentv1 := v1.Group("/students")
 		{
-			//userRepoClient, err := userRepoFake.Repo()
+			//studentRepoClient, err := studentRepoFake.Repo()
 			//if err != nil {
 			//	log.Fatalf("failed to create fake repo: %s", err.Error())
 			//}
 
-			userRepoClient, err := userRepoMysql.Repo(config.CompletedMysqlConfig)
+			studentRepoClient, err := studentRepoMysql.Repo(config.CompletedMysqlConfig)
 			if err != nil {
 				log.Fatalf("failed to create Mysql repo: %s", err.Error())
 			}
-			userRepo.SetClient(userRepoClient)
+			studentRepo.SetClient(studentRepoClient)
 
-			userController := userCtl.NewController(userRepoClient)
+			studentController := studentCtl.NewController(studentRepoClient)
 
 			basicStrategy := newBasicAuth()
-			userv1.Use(basicStrategy.AuthFunc())
+			studentv1.Use(basicStrategy.AuthFunc())
 
-			userv1.POST("", userController.Create)
-			userv1.DELETE(":name", userController.Delete)
-			userv1.PUT(":name", userController.Update)
-			userv1.GET(":name", userController.Get)
-			userv1.GET("", userController.List)
+			studentv1.POST("", studentController.Create)
+			studentv1.DELETE(":name", studentController.Delete)
+			studentv1.PUT(":name", studentController.Update)
+			studentv1.GET(":name", studentController.Get)
+			studentv1.GET("", studentController.List)
 		}
 
 		log.Info("[GINServer] registry secretHandler")

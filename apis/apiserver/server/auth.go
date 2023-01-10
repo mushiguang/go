@@ -8,8 +8,8 @@ import (
 	"encoding/base64"
 	jwt "github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
-	userModel "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/model/v1"
-	userRepo "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/repo"
+	studentModel "github.com/mushiguang/go/apiserver/apis/apiserver/student/model/v1"
+	studentRepo "github.com/mushiguang/go/apiserver/apis/apiserver/student/repo"
 	"github.com/spf13/viper"
 	"net/http"
 	"strings"
@@ -28,23 +28,23 @@ const (
 )
 
 type loginInfo struct {
-	Username string `form:"username" json:"username" binding:"required"`
+	Studentname string `form:"studentname" json:"studentname" binding:"required"`
 	Password string `form:"password" json:"password" binding:"required"`
 }
 
 func newBasicAuth() auth.AuthStrategy {
-	return auth.NewBasicStrategy(func(username string, password string) bool {
-		user, err := userRepo.Client().UserRepo().Get(username)
+	return auth.NewBasicStrategy(func(studentname string, password string) bool {
+		student, err := studentRepo.Client().StudentRepo().Get(studentname)
 		if err != nil {
 			return false
 		}
 
-		if err := user.Compare(password); err != nil {
+		if err := student.Compare(password); err != nil {
 			return false
 		}
 
-		user.LoginedAt = time.Now()
-		_ = userRepo.Client().UserRepo().Update(user)
+		student.LoginedAt = time.Now()
+		_ = studentRepo.Client().StudentRepo().Update(student)
 
 		return true
 	})
@@ -68,7 +68,7 @@ func newJWTAuth() auth.AuthStrategy {
 			claims := jwt.ExtractClaims(c)
 			return claims[jwt.IdentityKey]
 		},
-		IdentityKey:  auth.UsernameKey,
+		IdentityKey:  auth.StudentnameKey,
 		Authorizator: authorizator(),
 		Unauthorized: func(c *gin.Context, code int, message string) {
 			c.JSON(code, gin.H{
@@ -98,23 +98,23 @@ func authenticator() func(c *gin.Context) (interface{}, error) {
 			return "", jwt.ErrFailedAuthentication
 		}
 
-		// Get the user information by the login username.
-		user, err := userRepo.Client().UserRepo().Get(login.Username)
+		// Get the student information by the login studentname.
+		student, err := studentRepo.Client().StudentRepo().Get(login.Studentname)
 		if err != nil {
-			log.Errorf("get user information failed: %s", err.Error())
+			log.Errorf("get student information failed: %s", err.Error())
 
 			return "", jwt.ErrFailedAuthentication
 		}
 
-		// Compare the login password with the user password.
-		if err := user.Compare(login.Password); err != nil {
+		// Compare the login password with the student password.
+		if err := student.Compare(login.Password); err != nil {
 			return "", jwt.ErrFailedAuthentication
 		}
 
-		user.LoginedAt = time.Now()
-		_ = userRepo.Client().UserRepo().Update(user)
+		student.LoginedAt = time.Now()
+		_ = studentRepo.Client().StudentRepo().Update(student)
 
-		return user, nil
+		return student, nil
 	}
 }
 
@@ -141,7 +141,7 @@ func parseWithHeader(c *gin.Context) (loginInfo, error) {
 	}
 
 	return loginInfo{
-		Username: pair[0],
+		Studentname: pair[0],
 		Password: pair[1],
 	}, nil
 }
@@ -182,7 +182,7 @@ func payloadFunc() func(data interface{}) jwt.MapClaims {
 			"iss": APIServerIssuer,
 			"aud": APIServerAudience,
 		}
-		if u, ok := data.(*userModel.User); ok {
+		if u, ok := data.(*studentModel.Student); ok {
 			claims[jwt.IdentityKey] = u.Name
 			claims["sub"] = u.Name
 		}
@@ -194,7 +194,7 @@ func payloadFunc() func(data interface{}) jwt.MapClaims {
 func authorizator() func(data interface{}, c *gin.Context) bool {
 	return func(data interface{}, c *gin.Context) bool {
 		if v, ok := data.(string); ok {
-			log.Debugf("[GINServer] JWT authorizator: user `%s` is authenticated.", v)
+			log.Debugf("[GINServer] JWT authorizator: student `%s` is authenticated.", v)
 
 			return true
 		}

@@ -6,8 +6,8 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/repo"
-	srv "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/service/v1"
+	"github.com/mushiguang/go/apiserver/apis/apiserver/policy/repo"
+	srv "github.com/mushiguang/go/apiserver/apis/apiserver/policy/service/v1"
 )
 
 const UsernameKey = "username"

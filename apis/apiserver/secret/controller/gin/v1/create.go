@@ -10,7 +10,7 @@ import (
 	"github.com/rebirthmonkey/go/pkg/errors"
 	ginUtil "github.com/rebirthmonkey/go/pkg/gin/util"
 	"github.com/rebirthmonkey/go/pkg/log"
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/model/v1"
+	model "github.com/mushiguang/go/apiserver/apis/apiserver/policy/model/v1"
 )
 
 // Create add new policy to the storage.
@@ -24,7 +24,7 @@ func (s *controller) Create(c *gin.Context) {
 		return
 	}
 
-	policy.Username = c.GetString(UsernameKey)
+	policy.Studentname = c.GetString(StudentnameKey)
 
 	if err := s.srv.NewPolicyService().Create(&policy); err != nil {
 		ginUtil.WriteResponse(c, err, nil)

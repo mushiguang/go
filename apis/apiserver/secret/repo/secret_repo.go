@@ -5,15 +5,15 @@
 package repo
 
 import (
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/secret/model/v1"
+	model "github.com/mushiguang/go/apiserver/apis/apiserver/secret/model/v1"
 )
 
 // SecretRepo defines the secret resources.
 type SecretRepo interface {
 	Create(secret *model.Secret) error
-	Delete(username, secretName string) error
-	DeleteByUser(username string) error
+	Delete(studentname, secretName string) error
+	DeleteByStudent(studentname string) error
 	Update(secret *model.Secret) error
-	Get(username, secretName string) (*model.Secret, error)
-	List(username string) (*model.SecretList, error)
+	Get(studentname, secretName string) (*model.Secret, error)
+	List(studentname string) (*model.SecretList, error)
 }

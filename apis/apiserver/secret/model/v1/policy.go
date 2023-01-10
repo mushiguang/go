@@ -15,7 +15,7 @@ import (
 type Secret struct {
 	// Standard object's metadata.
 	metamodel.ObjectMeta `       json:"metadata,omitempty"`
-	Username             string `json:"username"           gorm:"column:username"  validate:"omitempty"`
+	Studentname             string `json:"studentname"           gorm:"column:studentname"  validate:"omitempty"`
 	SecretID             string `json:"secretID"           gorm:"column:secretID"  validate:"omitempty"`
 	SecretKey            string `json:"secretKey"          gorm:"column:secretKey" validate:"omitempty"`
 

@@ -10,7 +10,7 @@ import (
 	"github.com/rebirthmonkey/go/pkg/errors"
 	"github.com/rebirthmonkey/go/pkg/gin/util"
 	"github.com/rebirthmonkey/go/pkg/log"
-	model "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/policy/model/v1"
+	model "github.com/mushiguang/go/apiserver/apis/apiserver/policy/model/v1"
 )
 
 func (s *controller) Update(c *gin.Context) {
@@ -23,7 +23,7 @@ func (s *controller) Update(c *gin.Context) {
 		return
 	}
 
-	username := c.GetString(UsernameKey)
+	username := c.GetString(StudentnameKey)
 	policyName := c.Param("name")
 
 	policy, err := s.srv.NewPolicyService().Get(username, policyName)

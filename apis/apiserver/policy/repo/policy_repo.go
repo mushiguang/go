@@ -11,9 +11,9 @@ import (
 // PolicyRepo defines the secret resources.
 type PolicyRepo interface {
 	Create(policy *model.Policy) error
-	Delete(username string, policyName string) error
-	DeleteByUser(username string) error
+	Delete(studentname string, policyName string) error
+	DeleteByUser(studentname string) error
 	Update(policy *model.Policy) error
-	Get(username string, policyName string) (*model.Policy, error)
-	List(username string) (*model.PolicyList, error)
+	Get(studentname string, policyName string) (*model.Policy, error)
+	List(studentname string) (*model.PolicyList, error)
 }
