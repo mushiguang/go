@@ -17,7 +17,7 @@ spec:
       volumes:
         - name: vol-config
           hostPath:
-            path: /Users/ruan/workspace/go/scaffold/apiserver/configs
+            path: /Users/mushiguang/workspace/go/configs
             type: Directory
       containers:
         - name: apiserver

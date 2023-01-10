@@ -15,27 +15,27 @@ insecure::healthz()
   ${RCURL} http://${INSECURE_SERVER}/healthz
 }
 
-insecure::user() # 用于无 auth 验证
+insecure::student() # 用于无 auth 验证
 {
   # 1. 如果有 test00 用户先清空
-  ${DCURL} http://${INSECURE_SERVER}/v1/users/test00; echo
+  ${DCURL} http://${INSECURE_SERVER}/v1/students/test00; echo
 
   # 2. 创建 test00
-  ${CCURL} "${Header}" http://${INSECURE_SERVER}/v1/users \
-    -d'{"metadata":{"name":"test00"},"password":"User@2022","nickname":"00","email":"test00@gmail.com","phone":"1306280xxxx"}'; echo
+  ${CCURL} "${Header}" http://${INSECURE_SERVER}/v1/students \
+    -d'{"metadata":{"name":"test00"},"password":"Student@2022","nickname":"00","email":"test00@gmail.com","phone":"1306280xxxx"}'; echo
 
   # 3. 列出所有用户
-  ${RCURL} "http://${INSECURE_SERVER}/v1/users?offset=0&limit=10"; echo
+  ${RCURL} "http://${INSECURE_SERVER}/v1/students?offset=0&limit=10"; echo
 
   # 4. 获取 test00 用户的详细信息
-  ${RCURL} http://${INSECURE_SERVER}/v1/users/test00; echo
+  ${RCURL} http://${INSECURE_SERVER}/v1/students/test00; echo
 
   # 5. 修改 test00 用户
-  ${UCURL} "${Header}" http://${INSECURE_SERVER}/v1/users/test00 \
+  ${UCURL} "${Header}" http://${INSECURE_SERVER}/v1/students/test00 \
     -d'{"nickname":"test00_modified","email":"test00_modified@foxmail.com","phone":"1306280xxxx"}'; echo
 
   # 6. 删除 test00 用户
-  ${DCURL} http://${INSECURE_SERVER}/v1/users/test00; echo
+  ${DCURL} http://${INSECURE_SERVER}/v1/students/test00; echo
 }
 
 insecure::secret()  # 运行：./tests/api/rest.sh secret
@@ -68,7 +68,7 @@ insecure::policy()  # 运行：./tests/api/rest.sh policy
 
  # 2. 创建 policy0 策略
   ${CCURL} "${Header}" http://${INSECURE_SERVER}/v1/policies \
-    -d'{"metadata":{"name":"policy0"},"policy":{"description":"One policy to rule them all.","subjects":["users:<peter|ken>","users:maria","groups:admins"],"actions":["delete","<create|update>"],"effect":"allow","resources":["resources:articles:<.*>","resources:printer"],"conditions":{"remoteIPAddress":{"type":"CIDRCondition","options":{"cidr":"192.168.0.1/16"}}}}}'; echo
+    -d'{"metadata":{"name":"policy0"},"policy":{"description":"One policy to rule them all.","subjects":["students:<peter|ken>","students:maria","groups:admins"],"actions":["delete","<create|update>"],"effect":"allow","resources":["resources:articles:<.*>","resources:printer"],"conditions":{"remoteIPAddress":{"type":"CIDRCondition","options":{"cidr":"192.168.0.1/16"}}}}}'; echo
 
   # 3. 列出所有 policies
   ${RCURL} "${Header}" http://${INSECURE_SERVER}/v1/policies; echo
@@ -78,7 +78,7 @@ insecure::policy()  # 运行：./tests/api/rest.sh policy
 
   # 5. 修改 policy0 策略
   ${UCURL} "${Header}" http://${INSECURE_SERVER}/v1/policies/policy0 \
-    -d'{"policy":{"description":"One policy to rule them all(modified).","subjects":["users:<peter|ken>","users:maria","groups:admins"],"actions":["delete","<create|update>"],"effect":"allow","resources":["resources:articles:<.*>","resources:printer"],"conditions":{"remoteIPAddress":{"type":"CIDRCondition","options":{"cidr":"192.168.0.1/16"}}}}}'; echo
+    -d'{"policy":{"description":"One policy to rule them all(modified).","subjects":["students:<peter|ken>","students:maria","groups:admins"],"actions":["delete","<create|update>"],"effect":"allow","resources":["resources:articles:<.*>","resources:printer"],"conditions":{"remoteIPAddress":{"type":"CIDRCondition","options":{"cidr":"192.168.0.1/16"}}}}}'; echo
 
   # 6. 删除 policy0 策略
   ${DCURL} "${Header}" http://${INSECURE_SERVER}/v1/policies/policy0; echo

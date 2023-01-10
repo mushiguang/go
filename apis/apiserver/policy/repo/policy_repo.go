@@ -12,7 +12,7 @@ import (
 type PolicyRepo interface {
 	Create(policy *model.Policy) error
 	Delete(studentname string, policyName string) error
-	DeleteByUser(studentname string) error
+	DeleteByStudent(studentname string) error
 	Update(policy *model.Policy) error
 	Get(studentname string, policyName string) (*model.Policy, error)
 	List(studentname string) (*model.PolicyList, error)

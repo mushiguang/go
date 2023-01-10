@@ -77,7 +77,7 @@ func (p *policyRepo) Delete(studentname, policyName string) error {
 	return nil
 }
 
-func (p *policyRepo) DeleteByUser(studentname string) error {
+func (p *policyRepo) DeleteByStudent(studentname string) error {
 	err := p.dbEngine.Where("studentname = ?", studentname).Delete(&model.Policy{}).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {

@@ -475,7 +475,7 @@ linters-settings:
 
     # Reject patterns
     reject:
-    - github.com\/user\/package\/v4\.Type
+    - github.com\/student\/package\/v4\.Type
 
   lll:
     # max line length, lines longer will be reported. Default is 120.

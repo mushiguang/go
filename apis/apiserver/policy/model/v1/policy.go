@@ -23,7 +23,7 @@ type Policy struct {
 	metamodel.ObjectMeta `json:"metadata,omitempty"`
 
 	// The user of the policy.
-	Username string `json:"username" gorm:"column:username" validate:"omitempty"`
+	//Username string `json:"username" gorm:"column:username" validate:"omitempty"`
 	Studentname string `json:"studentname" gorm:"column:studentname" validate:"omitempty"`
 
 	// AuthzPolicy policy, will not be stored in db.

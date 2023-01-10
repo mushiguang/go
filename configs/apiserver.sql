@@ -17,13 +17,13 @@ USE `iam`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `student`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE `student` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `instanceID` varchar(32) DEFAULT NULL,
   `name` varchar(45) NOT NULL,
@@ -44,13 +44,13 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `student`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'user','admin',1,'admin','$2a$10$WnQD2DCfWVhlGmkQ8pdLkesIGPf9KJB7N1mhSOqulbgN7ZMo44Mv2','admin@foxmail.com','1812884xxxx',1,'{}',now(),'2021-05-27 10:01:40','2021-05-05 21:13:14');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `student` WRITE;
+/*!40000 ALTER TABLE `student` DISABLE KEYS */;
+INSERT INTO `student` VALUES (1,'student','admin',1,'admin','$2a$10$WnQD2DCfWVhlGmkQ8pdLkesIGPf9KJB7N1mhSOqulbgN7ZMo44Mv2','admin@foxmail.com','1812884xxxx',1,'{}',now(),'2021-05-27 10:01:40','2021-05-05 21:13:14');
+/*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -78,7 +78,7 @@ CREATE TABLE `secret` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `instanceID` varchar(32) DEFAULT NULL,
   `name` varchar(45) NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `studentname` varchar(255) NOT NULL,
   `secretID` varchar(36) NOT NULL,
   `secretKey` varchar(255) NOT NULL,
   `expires` int(64) unsigned NOT NULL DEFAULT 1534308590,
@@ -112,7 +112,7 @@ CREATE TABLE `policy` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `instanceID` varchar(32) DEFAULT NULL,
   `name` varchar(45) NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `studentname` varchar(255) NOT NULL,
   `policyShadow` longtext DEFAULT NULL,
   `extendShadow` longtext DEFAULT NULL,
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -141,7 +141,7 @@ UNLOCK TABLES;
 DELIMITER ;;
 -- /*!50003 CREATE*/ /*!50017 DEFINER=`iam`@`127.0.0.1`*/ /*!50003 TRIGGER `iam`.`policy_BEFORE_DELETE` BEFORE DELETE ON `policy` FOR EACH ROW
 -- BEGIN
--- 	insert into policy_audit values(old.id, old.instanceID, old.name, old.username, old.policyShadow, old.extendShadow, old.createdAt, old.updatedAt, curtime());
+-- 	insert into policy_audit values(old.id, old.instanceID, old.name, old.studentname, old.policyShadow, old.extendShadow, old.createdAt, old.updatedAt, curtime());
 -- END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

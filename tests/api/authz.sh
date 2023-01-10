@@ -19,7 +19,7 @@ insecure::login()
   HeaderBasic="-HAuthorization: Basic ${basic}"  # 注意 -H 与 Authorization 间不能有空格，否则解析会有问题
 
   ${CCURL} "${Header}" "${HeaderBasic}" http://${INSECURE_SERVER}/login \
-    -d'{"username":"admin","password":"Admin@2021"}' |  jq '.token' | sed 's/"//g'
+    -d'{"studentname":"admin","password":"Admin@2021"}' |  jq '.token' | sed 's/"//g'
 }
 
 insecure::authz-noauth()
@@ -32,11 +32,11 @@ insecure::authz-noauth()
 
   # 3 创建 wkpolicy 策略
   ${CCURL} "${Header}" "${token}" http://${INSECURE_SERVER}/v1/policies \
-    -d'{"metadata":{"name":"wkpolicy"},"policy":{"description":"One policy to rule them all.","subjects":["users:<peter|ken>","users:maria","groups:admins"],"actions":["delete","<create|update>"],"effect":"allow","resources":["resources:articles:<.*>","resources:printer"],"conditions":{"remoteIPAddress":{"type":"CIDRCondition","options":{"cidr":"192.168.0.1/16"}}}}}'; echo
+    -d'{"metadata":{"name":"wkpolicy"},"policy":{"description":"One policy to rule them all.","subjects":["students:<peter|ken>","students:maria","groups:admins"],"actions":["delete","<create|update>"],"effect":"allow","resources":["resources:articles:<.*>","resources:printer"],"conditions":{"remoteIPAddress":{"type":"CIDRCondition","options":{"cidr":"192.168.0.1/16"}}}}}'; echo
 
   # 4. 调用 /v1/authz 完成资源鉴权
   $CCURL "${Header}" http://${INSECURE_AUTHZ_SERVER}/v1/authz \
-    -d'{"subject":"users:maria","action":"delete","resource":"resources:articles:ladon-introduction","context":{"remoteIPAddress":"192.168.0.5"}}'
+    -d'{"subject":"students:maria","action":"delete","resource":"resources:articles:ladon-introduction","context":{"remoteIPAddress":"192.168.0.5"}}'
 }
 
 if [[ "$*" =~ insecure:: ]];then

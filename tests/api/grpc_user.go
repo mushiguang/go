@@ -22,10 +22,10 @@ func main() {
 	}
 	defer conn.Close()
 
-	client := pb.NewUserClient(conn)
+	client := pb.NewStudentClient(conn)
 
 	ctx := context.Background()
-	c := &pb.ListUsersRequest{}
-	sl, _ := client.ListUsers(ctx, c)
-	fmt.Print("User List is:", sl)
+	c := &pb.ListStudentsRequest{}
+	sl, _ := client.ListStudents(ctx, c)
+	fmt.Print("Student List is:", sl)
 }

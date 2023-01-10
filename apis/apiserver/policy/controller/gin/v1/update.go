@@ -23,7 +23,7 @@ func (s *controller) Update(c *gin.Context) {
 		return
 	}
 
-	username := c.GetString(UsernameKey)
+	//username := c.GetString(UsernameKey)
 	studentname := c.GetString(StudentnameKey)
 	policyName := c.Param("name")
 

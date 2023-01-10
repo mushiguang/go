@@ -10,7 +10,7 @@ import (
 	srv "github.com/mushiguang/go/apis/apiserver/policy/service/v1"
 )
 
-const UsernameKey = "username"
+//const UsernameKey = "username"
 const StudentnameKey = "studentname"
 
 // Controller creates a secret handler interface for secret resource.
