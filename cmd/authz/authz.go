@@ -5,7 +5,7 @@
 package main
 
 import (
-	authzApp "github.com/rebirthmonkey/go/scaffold/apiserver/apis/authz"
+	authzApp "github.com/mushiguang/go/apis/authz"
 )
 
 func main() {

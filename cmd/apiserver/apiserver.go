@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver"
+	"github.com/mushiguang/go/apis/apiserver"
 )
 
 func main() {
