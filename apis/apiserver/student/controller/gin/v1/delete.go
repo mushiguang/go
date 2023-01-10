@@ -1,7 +1,3 @@
-// Copyright 2022 Wukong SUN <rebirthmonkey@gmail.com>. All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
-
 package v1
 
 import (
@@ -10,17 +6,17 @@ import (
 	"github.com/rebirthmonkey/go/pkg/log"
 )
 
-// Delete deletes an user by the user identifier.
+// Delete deletes an student by the student identifier.
 // Only administrator can call this function.
 func (u *controller) Delete(c *gin.Context) {
-	log.L(c).Info("[GinServer] userController: delete")
+	log.L(c).Info("[GinServer] studentController: delete")
 
-	if err := u.srv.NewUserService().Delete(c.Param("name")); err != nil {
+	if err := u.srv.NewStudentService().Delete(c.Param("name")); err != nil {
 		util.WriteResponse(c, err, nil)
 
 		return
 	}
 
-	var msg string = "deleted user " + c.Param("name")
+	var msg string = "deleted student " + c.Param("name")
 	util.WriteResponse(c, nil, msg)
 }

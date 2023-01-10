@@ -1,7 +1,3 @@
-// Copyright 2022 Wukong SUN <rebirthmonkey@gmail.com>. All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
-
 package v1
 
 import (
@@ -10,17 +6,17 @@ import (
 	"github.com/rebirthmonkey/go/pkg/log"
 )
 
-// List lists the users in the storage.
+// List lists the students in the storage.
 // Only administrator can call this function.
 func (u *controller) List(c *gin.Context) {
-	log.L(c).Info("[GinServer] userController: list")
+	log.L(c).Info("[GinServer] studentController: list")
 
-	users, err := u.srv.NewUserService().List()
+	students, err := u.srv.NewStudentService().List()
 	if err != nil {
 		util.WriteResponse(c, err, nil)
 
 		return
 	}
 
-	util.WriteResponse(c, nil, users)
+	util.WriteResponse(c, nil, students)
 }

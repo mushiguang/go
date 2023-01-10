@@ -1,19 +1,15 @@
-// Copyright 2022 Wukong SUN <rebirthmonkey@gmail.com>. All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
-
 package v1
 
 import (
-	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/repo"
+	"github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/student/repo"
 )
 
 // Service defines functions used to return resource interface.
 type Service interface {
-	NewUserService() UserService
+	NewStudentService() StudentService
 }
 
-// service is the business logic of the user resource handling.
+// service is the business logic of the student resource handling.
 type service struct {
 	repo repo.Repo
 }
@@ -25,7 +21,7 @@ func NewService(repo repo.Repo) Service {
 	return &service{repo}
 }
 
-// NewUserService returns a user service instance.
-func (s *service) NewUserService() UserService {
-	return newUserService(s.repo)
+// NewStudentService returns a student service instance.
+func (s *service) NewStudentService() StudentService {
+	return newStudentService(s.repo)
 }

@@ -1,7 +1,3 @@
-// Copyright 2022 Wukong SUN <rebirthmonkey@gmail.com>. All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
-
 package v1
 
 import (
@@ -13,8 +9,8 @@ import (
 	"gorm.io/gorm"
 )
 
-// User represents a user restful resource. It is also used as data model.
-type User struct {
+// Student represents a student restful resource. It is also used as data model.
+type Student struct {
 	metamodel.ObjectMeta `json:"metadata,omitempty"`
 
 	Status      int64     `json:"status"              gorm:"column:status"    validate:"omitempty"`
@@ -27,29 +23,29 @@ type User struct {
 	LoginedAt   time.Time `json:"loginedAt,omitempty" gorm:"column:loginedAt"`
 }
 
-// UserList is the whole list of all users which have been stored in the storage.
-type UserList struct {
+// StudentList is the whole list of all students which have been stored in the storage.
+type StudentList struct {
 	// +optional
 	metamodel.ListMeta `json:",inline"`
 
-	Items []*User `json:"items"`
+	Items []*Student `json:"items"`
 }
 
 // TableName maps to mysql table name.
-func (u *User) TableName() string {
-	return "user"
+func (u *Student) TableName() string {
+	return "student"
 }
 
-// Compare with the plain text password. Returns true if it's the same as the encrypted one (in the `User` struct).
-func (u *User) Compare(pwd string) (err error) {
+// Compare with the plain text password. Returns true if it's the same as the encrypted one (in the `Student` struct).
+func (u *Student) Compare(pwd string) (err error) {
 	err = auth.Compare(u.Password, pwd)
 
 	return
 }
 
 // AfterCreate run after create database record.
-func (u *User) AfterCreate(tx *gorm.DB) error {
-	u.InstanceID = util.GetInstanceID(u.ID, "user-")
+func (u *Student) AfterCreate(tx *gorm.DB) error {
+	u.InstanceID = util.GetInstanceID(u.ID, "student-")
 
 	return tx.Save(u).Error
 }

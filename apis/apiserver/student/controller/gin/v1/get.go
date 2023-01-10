@@ -1,7 +1,3 @@
-// Copyright 2022 Wukong SUN <rebirthmonkey@gmail.com>. All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
-
 package v1
 
 import (
@@ -10,16 +6,16 @@ import (
 	"github.com/rebirthmonkey/go/pkg/log"
 )
 
-// Get gets a user's info by the user identifier.
+// Get gets a student's info by the student identifier.
 func (u *controller) Get(c *gin.Context) {
-	log.L(c).Info("[GinServer] userController: get")
+	log.L(c).Info("[GinServer] studentController: get")
 
-	user, err := u.srv.NewUserService().Get(c.Param("name"))
+	student, err := u.srv.NewStudentService().Get(c.Param("name"))
 	if err != nil {
 		util.WriteResponse(c, err, nil)
 
 		return
 	}
 
-	util.WriteResponse(c, nil, user)
+	util.WriteResponse(c, nil, student)
 }

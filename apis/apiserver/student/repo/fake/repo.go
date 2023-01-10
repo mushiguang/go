@@ -1,17 +1,13 @@
-// Copyright 2022 Wukong SUN <rebirthmonkey@gmail.com>. All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
-
 package fake
 
 import (
-	repo3 "github.com/rebirthmonkey/go/scaffold/apiserver/apis/apiserver/user/repo"
+	repo3 "github.com/mushiguang/go/student/repo"
 	"sync"
 )
 
 // repo defines the APIServer storage.
 type repo struct {
-	userRepo repo3.UserRepo
+	studentRepo repo3.StudentRepo
 }
 
 var (
@@ -25,16 +21,16 @@ var _ repo3.Repo = (*repo)(nil)
 func Repo() (repo3.Repo, error) {
 	once.Do(func() {
 		r = repo{
-			userRepo: newUserRepo(),
+			studentRepo: newStudentRepo(),
 		}
 	})
 
 	return r, nil
 }
 
-// UserRepo returns the user store client instance.
-func (r repo) UserRepo() repo3.UserRepo {
-	return r.userRepo
+// StudentRepo returns the student store client instance.
+func (r repo) StudentRepo() repo3.StudentRepo {
+	return r.studentRepo
 }
 
 // Close closes the repo.
