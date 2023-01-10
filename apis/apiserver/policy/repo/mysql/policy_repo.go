@@ -28,7 +28,8 @@ var _ policyRepoInterface.PolicyRepo = (*policyRepo)(nil)
 // newPolicyRepo creates and returns a user storage.
 func newPolicyRepo(cfg *mysql.CompletedConfig) policyRepoInterface.PolicyRepo {
 	dsn := fmt.Sprintf(`%s:%s@tcp(%s)/%s?charset=utf8&parseTime=%t&loc=%s`,
-		cfg.Username,
+		//cfg.Username,
+		cfg.Studentname,
 		cfg.Password,
 		cfg.Host,
 		cfg.Database,
