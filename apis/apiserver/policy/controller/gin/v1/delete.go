@@ -19,6 +19,12 @@ func (s *controller) Delete(c *gin.Context) {
 		return
 	}
 
+	if err := s.srv.NewPolicyService().Delete(c.GetString(StudentnameKey), c.Param("name")); err != nil {
+		util.WriteResponse(c, err, nil)
+
+		return
+	}
+
 	var msg string = "deleted policy " + c.Param("name")
 	util.WriteResponse(c, nil, msg)
 }

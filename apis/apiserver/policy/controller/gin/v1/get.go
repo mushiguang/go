@@ -13,7 +13,8 @@ import (
 func (s *controller) Get(c *gin.Context) {
 	log.L(c).Info("[GINServer] policyController: get")
 
-	policy, err := s.srv.NewPolicyService().Get(c.GetString(UsernameKey), c.Param("name"))
+	//policy, err := s.srv.NewPolicyService().Get(c.GetString(UsernameKey), c.Param("name"))
+	policy, err := s.srv.NewPolicyService().Get(c.GetString(StudentnameKey), c.Param("name"))
 	if err != nil {
 		util.WriteResponse(c, err, nil)
 

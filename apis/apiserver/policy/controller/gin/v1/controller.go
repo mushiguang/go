@@ -11,6 +11,7 @@ import (
 )
 
 const UsernameKey = "username"
+const StudentnameKey = "studentname"
 
 // Controller creates a secret handler interface for secret resource.
 type Controller interface {

@@ -24,6 +24,7 @@ type Policy struct {
 
 	// The user of the policy.
 	Username string `json:"username" gorm:"column:username" validate:"omitempty"`
+	Studentname string `json:"studentname" gorm:"column:studentname" validate:"omitempty"`
 
 	// AuthzPolicy policy, will not be stored in db.
 	AuthzPolicy AuthzPolicy `json:"policy,omitempty" gorm:"-" validate:"omitempty"`
